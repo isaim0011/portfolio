@@ -156,11 +156,14 @@
     box-shadow: 0 12px 30px -22px rgba(0,0,0,.5); }
   .project h3 { font-size: clamp(.88rem, 1.9vh, 1.05rem); color: #fff; margin-bottom: 3px; }
   .project h3 .arrow { color: var(--green-bright); }
-  .project h3 .muted { color: var(--dim); font-weight: 400; }
-  .project-links { margin-top: clamp(8px, 1.6vh, 14px); display: flex; gap: 12px; align-items: center; }
-  .project-links a { color: var(--green-bright); text-decoration: none; font-size: clamp(.7rem, 1.4vh, .82rem); font-weight: 500; }
+  .project-links { margin-top: clamp(8px, 1.6vh, 14px); display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .project-links a { color: var(--green-bright); text-decoration: none; font-size: clamp(.7rem, 1.4vh, .82rem); font-weight: 600; }
   .project-links a:hover { text-decoration: underline; }
-  .project-links .badge { background: #1f3322; color: var(--green-bright); border: 1px solid #2e5434; border-radius: 4px; font-size: .68rem; padding: 1px 6px; }
+  .project-links .badge { background: #16291a; color: var(--green-bright); border: 1px solid #2e5434; border-radius: 4px; font-size: .68rem; padding: 2px 7px; display: inline-flex; align-items: center; gap: 4px; }
+  .project-links .badge.status-live { background: #1a3320; border-color: #38a169; color: #4ade80; }
+  .project-links .badge.status-live::before { content: "●"; font-size: .65rem; color: #4ade80; }
+  .project-links .badge.status-pub { background: #202b36; border-color: #3b82f6; color: #93c5fd; }
+  .project-links .badge.status-pub::before { content: "▲"; font-size: .55rem; color: #60a5fa; }
   .stack-line { color: var(--green); font-size: clamp(.68rem, 1.4vh, .8rem); margin-bottom: clamp(6px, 1.3vh, 12px); }
   .project ul { list-style: none; }
   .project li { position: relative; padding-left: 18px; margin-bottom: clamp(3px, .8vh, 7px);
@@ -313,12 +316,16 @@
               <li>Incremental code-graph engine and blast-radius analyzer for AI coding agents (Claude Code, Cursor, Windsurf).</li>
               <li>98.2% token reduction by generating surgical AST skeletons instead of dumping entire source files into context.</li>
               <li>Pre-edit impact radius and in-memory patch verification (`verify_patch`) prevent breaking changes before disk writes.</li>
-              <li>Published across crates.io, PyPI, npm/npx, Homebrew Tap, and Open VSX extension.</li>
+              <li>Shipped and actively published across crates.io, PyPI, npm/npx, Homebrew Tap, and Open VSX extension.</li>
             </ul>
             <div class="tags"><span class="tag">Rust</span><span class="tag">Tree-sitter</span><span class="tag">MCP</span><span class="tag">crates.io</span><span class="tag">npm</span></div>
             <div class="project-links">
+              <span class="badge status-live">Live Ecosystem</span>
               <a href="https://github.com/isaim0011/blastcode" target="_blank" rel="noopener">GitHub ↗</a>
-              <span class="badge">crates.io · npm · PyPI</span>
+              <a href="https://crates.io/crates/blastcode" target="_blank" rel="noopener">crates.io ↗</a>
+              <a href="https://pypi.org/project/blastcode/" target="_blank" rel="noopener">PyPI ↗</a>
+              <a href="https://www.npmjs.com/package/blastcode" target="_blank" rel="noopener">npm ↗</a>
+              <a href="https://open-vsx.org/extension/isaim0011/blastcode" target="_blank" rel="noopener">Open VSX ↗</a>
             </div>
           </article>
 
@@ -333,7 +340,8 @@
             </ul>
             <div class="tags"><span class="tag">SvelteKit 2</span><span class="tag">Svelte 5</span><span class="tag">Rust Axum</span><span class="tag">Supabase</span><span class="tag">Edge</span></div>
             <div class="project-links">
-              <a href="https://ai-ustaad.pages.dev" target="_blank" rel="noopener">Live Platform ↗</a>
+              <span class="badge status-live">Active Production</span>
+              <a href="https://ai-ustaad.pages.dev" target="_blank" rel="noopener">Live Web App ↗</a>
               <a href="https://github.com/isaim0011/ai-ustaad" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </article>
@@ -349,8 +357,10 @@
             </ul>
             <div class="tags"><span class="tag">Rust</span><span class="tag">VS Code Ext</span><span class="tag">CLI</span><span class="tag">OAuth</span><span class="tag">Open VSX</span></div>
             <div class="project-links">
+              <span class="badge status-pub">Shipped CLI &amp; Ext</span>
               <a href="https://github.com/isaim0011/switchx" target="_blank" rel="noopener">GitHub ↗</a>
-              <span class="badge">Open VSX · Cargo</span>
+              <a href="https://open-vsx.org/extension/isaim0011/switchx" target="_blank" rel="noopener">Open VSX ↗</a>
+              <a href="https://crates.io/crates/switchx" target="_blank" rel="noopener">crates.io ↗</a>
             </div>
           </article>
 
@@ -365,8 +375,10 @@
             </ul>
             <div class="tags"><span class="tag">Rust</span><span class="tag">SIMD</span><span class="tag">WASM</span><span class="tag">PyPI</span><span class="tag">ISO 32000</span></div>
             <div class="project-links">
+              <span class="badge status-pub">Published v1.0</span>
               <a href="https://github.com/isaim0011/oxpdf" target="_blank" rel="noopener">GitHub ↗</a>
-              <span class="badge">PyPI · MCP</span>
+              <a href="https://pypi.org/project/oxpdf/" target="_blank" rel="noopener">PyPI Package ↗</a>
+              <a href="https://crates.io/crates/oxpdf" target="_blank" rel="noopener">crates.io ↗</a>
             </div>
           </article>
 
@@ -381,8 +393,8 @@
             </ul>
             <div class="tags"><span class="tag">Rust</span><span class="tag">Roman Urdu</span><span class="tag">Education</span><span class="tag">WASM</span><span class="tag">Local-first</span></div>
             <div class="project-links">
+              <span class="badge status-live">In Active Build</span>
               <a href="https://github.com/isaim0011/rustaad" target="_blank" rel="noopener">GitHub ↗</a>
-              <span class="badge">Education · Open Mission</span>
             </div>
           </article>
 
@@ -397,8 +409,11 @@
             </ul>
             <div class="tags"><span class="tag">Rust</span><span class="tag">crates.io</span><span class="tag">PyPI</span><span class="tag">Open VSX</span><span class="tag">Git</span></div>
             <div class="project-links">
+              <span class="badge status-pub">Shipped Ecosystem</span>
               <a href="https://github.com/isaim0011/git-notes" target="_blank" rel="noopener">GitHub ↗</a>
-              <span class="badge">crates.io · PyPI · VS Code</span>
+              <a href="https://crates.io/crates/git-notes" target="_blank" rel="noopener">crates.io ↗</a>
+              <a href="https://pypi.org/project/git-notes-hooks/" target="_blank" rel="noopener">PyPI ↗</a>
+              <a href="https://open-vsx.org/extension/isaim0011/git-notes" target="_blank" rel="noopener">Open VSX ↗</a>
             </div>
           </article>
 
@@ -413,7 +428,8 @@
             </ul>
             <div class="tags"><span class="tag">TypeScript</span><span class="tag">Rust</span><span class="tag">MCP</span><span class="tag">Cloudflare Pages</span><span class="tag">Kinetic UI</span></div>
             <div class="project-links">
-              <a href="https://linework-14t.pages.dev" target="_blank" rel="noopener">Live Platform ↗</a>
+              <span class="badge status-live">Live Deployed</span>
+              <a href="https://linework-14t.pages.dev" target="_blank" rel="noopener">Live Web App ↗</a>
               <a href="https://github.com/isaim0011/linework" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </article>
@@ -428,6 +444,10 @@
               <li>Single self-contained Docker image: API + frontend + dependencies with rate limiting and graceful shutdown.</li>
             </ul>
             <div class="tags"><span class="tag">Go</span><span class="tag">pdfcpu</span><span class="tag">pdf.js</span><span class="tag">Docker</span></div>
+            <div class="project-links">
+              <span class="badge status-pub">Production Ready</span>
+              <a href="https://github.com/isaim0011" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </article>
 
           <article class="project">
@@ -439,6 +459,10 @@
               <li>Single binary serves the REST API and a no-build vanilla-JS SPA with real-time feed.</li>
             </ul>
             <div class="tags"><span class="tag">Go</span><span class="tag">OAuth</span><span class="tag">Vanilla JS</span><span class="tag">Zero deps</span></div>
+            <div class="project-links">
+              <span class="badge status-pub">Shipped Platform</span>
+              <a href="https://github.com/isaim0011" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </article>
         </div>
       </div>
