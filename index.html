@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>whoami — Saim Azam</title>
 <meta name="description" content="Saim Azam (iBIM0-0 / isaim0011) — systems developer who ships complete, dependency-light products end to end. Rust, Go, TypeScript, Python." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f120f'/%3E%3Ctext x='7' y='22' font-family='Courier,monospace' font-weight='bold' font-size='20' fill='%234ade80'%3E%3E_%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -84,8 +85,8 @@
     justify-content: safe center;
     overflow: hidden;
   }
-  /* work + stack flow within the main side-scroll — no inner scrollbars */
-  #work, #stack { flex: 0 0 auto; width: auto; min-width: 100vw; max-width: none; }
+  /* work + oss + stack flow within the main side-scroll — no inner scrollbars */
+  #work, #oss, #stack { flex: 0 0 auto; width: auto; min-width: 100vw; max-width: none; }
   .panel-inner { width: 100%; max-width: 860px; margin: 0 auto; min-width: 0; }
 
   .sec-head { font-size: clamp(1.05rem, 2.6vh, 1.35rem); font-weight: 700; margin-bottom: 2px; }
@@ -235,6 +236,7 @@
       <a href="#home" data-nav>home</a>
       <a href="#about" data-nav>about</a>
       <a href="#work" data-nav>work</a>
+      <a href="#oss" data-nav>oss</a>
       <a href="#stack" data-nav>stack</a>
       <a href="#contact" data-nav>contact</a>
     </nav>
@@ -339,6 +341,54 @@
           </article>
 
           <article class="project">
+            <h3><span class="arrow">&gt;</span> Rustaad</h3>
+            <div class="stack-line">Rust · Roman Urdu &amp; English · WebAssembly · Local-First</div>
+            <ul>
+              <li>Flagship interactive systems programming &amp; Rust platform built specifically for developers who lack learning resources in English.</li>
+              <li>Dual-language interactive curriculum (Roman Urdu + English) breaking technical barrier to entry for South Asian developers.</li>
+              <li>Zero-install in-browser code execution engine powered by WebAssembly and local-first progress caching.</li>
+              <li>Companion to AI Ustaad, fostering open-source systems engineering culture with community-first mentorship.</li>
+            </ul>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">Roman Urdu</span><span class="tag">Education</span><span class="tag">WASM</span><span class="tag">Local-first</span></div>
+            <div class="project-links">
+              <a href="https://github.com/isaim0011/rustaad" target="_blank" rel="noopener">GitHub ↗</a>
+              <span class="badge">Education · Open Mission</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> Git-Notes</h3>
+            <div class="stack-line">Rust · crates.io · PyPI · Open VSX · GitHub Action</div>
+            <ul>
+              <li>Decentralized Git-native code discussions and metadata engine built on pure Rust and `git notes`.</li>
+              <li>Unified ecosystem: `gn-core` library, `gn-cli` tool, `gn-tui` terminal UI, `git-notes-hooks` on PyPI, and Open VSX extension.</li>
+              <li>Zero branch pollution: reviews, automated CI annotations, and notes live in isolated refs outside working trees.</li>
+              <li>Automated CI synchronization with custom GitHub Action for zero-lock-in team collaboration.</li>
+            </ul>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">crates.io</span><span class="tag">PyPI</span><span class="tag">Open VSX</span><span class="tag">Git</span></div>
+            <div class="project-links">
+              <a href="https://github.com/isaim0011/git-notes" target="_blank" rel="noopener">GitHub ↗</a>
+              <span class="badge">crates.io · PyPI · VS Code</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> Linework</h3>
+            <div class="stack-line">TypeScript · SvelteKit 2 · Rust Axum · MCP Server</div>
+            <ul>
+              <li>Creative engine &amp; kinetic diagramming system: Thinking Orbs, Kinetic Figures, and interactive visual flowcharts.</li>
+              <li>Native Rust SVG/diagram compilation backend with sub-millisecond edge rendering.</li>
+              <li>Full MCP tool server integration allowing AI agents to generate structured interactive architectural diagrams on the fly.</li>
+              <li>Deployed on Cloudflare Pages edge network with real-time generative UI widgets.</li>
+            </ul>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Rust</span><span class="tag">MCP</span><span class="tag">Cloudflare Pages</span><span class="tag">Kinetic UI</span></div>
+            <div class="project-links">
+              <a href="https://linework-14t.pages.dev" target="_blank" rel="noopener">Live Platform ↗</a>
+              <a href="https://github.com/isaim0011/linework" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
             <h3><span class="arrow">&gt;</span> Universal Studio</h3>
             <div class="stack-line">Go · pdfcpu · pdf.js · Docker</div>
             <ul>
@@ -364,6 +414,88 @@
       </div>
     </section>
 
+    <!-- OSS CONTRIBUTIONS -->
+    <section class="panel" id="oss">
+      <div class="panel-inner work-inner">
+        <div class="sec-head"><span class="prompt">$</span> gh pr list --author @isaim0011 --state merged</div>
+        <div class="sec-sub"># open-source contributions &amp; upstream pull requests</div>
+        <div class="cards-row">
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> lopdf</h3>
+            <div class="stack-line">Rust · Merged PR #579 · Upstream PDF Library</div>
+            <ul>
+              <li>Identified and patched panic vulnerability in hex string decoding with odd character lengths.</li>
+              <li>Replaced unvalidated chunking with zero-allocation fallback and defensive byte-padding logic.</li>
+              <li>Added comprehensive unit tests covering MalformedHex, odd lengths, and whitespace-interleaved streams.</li>
+            </ul>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">PDF</span><span class="tag">Security</span><span class="tag">Upstream PR</span></div>
+            <div class="project-links">
+              <a href="https://github.com/J-F-Liu/lopdf/pull/579" target="_blank" rel="noopener">Merged PR #579 ↗</a>
+              <span class="badge">Merged</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> golang-rest-api-template</h3>
+            <div class="stack-line">Go · Merged PR #256 · Authentication &amp; Security</div>
+            <ul>
+              <li>Prevented silent bcrypt 72-byte password truncation vulnerability during user registration and password updates.</li>
+              <li>Implemented defensive validation layer returning explicit 400 Bad Request error before hash computation.</li>
+              <li>Added unit and integration test suites validating boundary checks.</li>
+            </ul>
+            <div class="tags"><span class="tag">Go</span><span class="tag">Bcrypt</span><span class="tag">Auth Security</span><span class="tag">Upstream PR</span></div>
+            <div class="project-links">
+              <a href="https://github.com/golang-standards/golang-rest-api-template/pull/256" target="_blank" rel="noopener">Merged PR #256 ↗</a>
+              <span class="badge">Merged</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> nextbsd-userland</h3>
+            <div class="stack-line">C · BSD Kernel/Userland · Merged PR #245</div>
+            <ul>
+              <li>Corrected missing power assertion checks in Mach system suspend routines.</li>
+              <li>Fixed kernel assertion leak under low-memory runtime conditions.</li>
+              <li>Verified across BSD target architectures.</li>
+            </ul>
+            <div class="tags"><span class="tag">C</span><span class="tag">BSD</span><span class="tag">Mach/Kernel</span><span class="tag">Upstream PR</span></div>
+            <div class="project-links">
+              <a href="https://github.com/NextBSD/nextbsd-userland/pull/245" target="_blank" rel="noopener">Merged PR #245 ↗</a>
+              <span class="badge">Merged</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> testcontainers-go</h3>
+            <div class="stack-line">Go · Docker · Container Lifecycle</div>
+            <ul>
+              <li>Enhanced container termination teardown logic and reaper timeouts under high-concurrency test runs.</li>
+              <li>Ensured zero orphan containers remain in automated CI environments.</li>
+            </ul>
+            <div class="tags"><span class="tag">Go</span><span class="tag">Docker</span><span class="tag">Testing</span><span class="tag">Upstream PR</span></div>
+            <div class="project-links">
+              <a href="https://github.com/testcontainers/testcontainers-go" target="_blank" rel="noopener">Upstream ↗</a>
+              <span class="badge">Contribution</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> zephyr-frontend &amp; drobek</h3>
+            <div class="stack-line">TypeScript · React · Stellar · Developer Tooling</div>
+            <ul>
+              <li>Hardened Stellar wallet session connection handling and resilient state persistence in Zephyr Frontend.</li>
+              <li>Refactored and fixed TypeScript types and configuration ergonomics in Drobek developer tools.</li>
+            </ul>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Stellar</span><span class="tag">Upstream PR</span></div>
+            <div class="project-links">
+              <a href="https://github.com/isaim0011" target="_blank" rel="noopener">GitHub Activity ↗</a>
+              <span class="badge">Contributions</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- STACK -->
     <section class="panel" id="stack">
       <div class="panel-inner">
@@ -373,12 +505,12 @@
         <div class="stack-grid">
           <div class="stack-card"><h4>Languages</h4><div class="items"><span class="chip">Rust</span><span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">HTML/CSS</span></div></div>
           <div class="stack-card"><h4>Frontend</h4><div class="items"><span class="chip">Svelte 5</span><span class="chip">SvelteKit</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Vue</span><span class="chip">Tailwind</span><span class="chip">WebAssembly</span></div></div>
+          <div class="stack-card"><h4>AI Builders &amp; Tooling</h4><div class="items"><span class="chip">Stitch</span><span class="chip">Lovable</span><span class="chip">v0</span><span class="chip">Claude Code</span><span class="chip">Cursor</span><span class="chip">Antigravity</span></div></div>
           <div class="stack-card"><h4>Backend &amp; Systems</h4><div class="items"><span class="chip">Axum (Rust)</span><span class="chip">net/http (Go)</span><span class="chip">Tree-sitter</span><span class="chip">SIMD</span><span class="chip">MCP Servers</span><span class="chip">FastAPI</span></div></div>
           <div class="stack-card"><h4>Databases</h4><div class="items"><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">SQLite</span><span class="chip">MySQL</span><span class="chip">Redis</span></div></div>
           <div class="stack-card"><h4>Cloud &amp; Deploy</h4><div class="items"><span class="chip">Cloudflare Pages</span><span class="chip">Docker</span><span class="chip">Google Cloud</span><span class="chip">Render</span><span class="chip">Vercel</span></div></div>
           <div class="stack-card"><h4>Tools &amp; Ecosystem</h4><div class="items"><span class="chip">Cargo</span><span class="chip">Git</span><span class="chip">VS Code Ext</span><span class="chip">Linux</span><span class="chip">Homebrew</span></div></div>
-          <div class="stack-card"><h4>Design</h4><div class="items"><span class="chip">Figma</span><span class="chip">Photoshop</span><span class="chip">Blender</span></div></div>
-          <div class="stack-card"><h4>Registries</h4><div class="items"><span class="chip">crates.io</span><span class="chip">npm</span><span class="chip">PyPI</span><span class="chip">Open VSX</span></div></div>
+          <div class="stack-card"><h4>Registries</h4><div class="items"><span class="chip">crates.io</span><span class="chip">PyPI</span><span class="chip">npm / npx</span><span class="chip">Open VSX</span><span class="chip">VS Code Market</span></div></div>
           <div class="stack-card"><h4>Principles</h4><div class="items"><span class="chip">Zero-dependency</span><span class="chip">Memory-bounded</span><span class="chip">Local-first</span><span class="chip">Privacy-first</span></div></div>
         </div>
       </div>
@@ -429,7 +561,7 @@
   });
 
   // Arrow keys + shortcuts
-  var order = ['home', 'about', 'work', 'stack', 'contact'];
+  var order = ['home', 'about', 'work', 'oss', 'stack', 'contact'];
   var sections = order.map(function (id) { return document.getElementById(id); });
   // Pick the panel whose left edge is nearest the current scroll position
   // (panels aren't all one screen wide — the work panel is wider).
