@@ -71,6 +71,8 @@
     overflow-y: hidden;
     scroll-snap-type: x proximity;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
   }
   .panel {
     flex: 0 0 100vw;
@@ -84,6 +86,7 @@
     flex-direction: column;
     justify-content: safe center;
     overflow: hidden;
+    touch-action: pan-x;
   }
   /* work + oss + stack flow within the main side-scroll — no inner scrollbars */
   #work, #oss, #stack { flex: 0 0 auto; width: auto; min-width: 100vw; max-width: none; }
@@ -540,11 +543,43 @@
 <script>
   var track = document.getElementById('track');
 
-  // Wheel: convert vertical scroll to horizontal
-  track.addEventListener('wheel', function (e) {
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      track.scrollLeft += e.deltaY;
+  // Wheel: robustly convert vertical/horizontal wheel delta to horizontal track scroll
+  window.addEventListener('wheel', function (e) {
+    if (!track) return;
+    // Normalize delta: deltaMode 1 = lines, 2 = pages, 0 = pixels
+    var factor = e.deltaMode === 1 ? 36 : e.deltaMode === 2 ? window.innerWidth : 1;
+    var dx = e.deltaX * factor;
+    var dy = e.deltaY * factor;
+    
+    // Use the dominant delta or combined delta
+    var delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+    if (delta !== 0) {
+      track.scrollLeft += delta;
       e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Touch Swipe for mobile & touchscreens
+  var touchStartX = 0, touchStartY = 0, touchScrollLeft = 0;
+  window.addEventListener('touchstart', function (e) {
+    if (e.touches && e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchScrollLeft = track.scrollLeft;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function (e) {
+    if (!e.touches || e.touches.length !== 1) return;
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+    var diffX = touchStartX - currentX;
+    var diffY = touchStartY - currentY;
+
+    // If swiping mostly horizontally, scroll track
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      track.scrollLeft = touchScrollLeft + diffX;
+      if (e.cancelable) e.preventDefault();
     }
   }, { passive: false });
 
