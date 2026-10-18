@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>whoami — Saim Azam</title>
-<meta name="description" content="Saim Azam (iBIM0-0) — developer who ships complete, dependency-light products end to end. Go, JavaScript, Python." />
+<meta name="description" content="Saim Azam (iBIM0-0 / isaim0011) — systems developer who ships complete, dependency-light products end to end. Rust, Go, TypeScript, Python." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -101,84 +101,46 @@
   /* ---------- hero panel ---------- */
   .terminal {
     background: var(--panel); border-radius: 16px;
-    padding: 36px 36px 0; position: relative; overflow: hidden;
-    box-shadow: 0 18px 40px -20px rgba(0,0,0,.45); min-height: 320px;
+    padding: clamp(20px, 4vw, 36px) clamp(18px, 4vw, 36px) clamp(16px, 3vw, 24px);
+    position: relative; overflow: hidden;
+    box-shadow: 0 18px 40px -20px rgba(0,0,0,.45);
+    max-height: calc(100vh - 220px);
+    display: flex; flex-direction: column;
   }
-  .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px;
-    background: #171d17; border-bottom: 1px solid #242c24; }
-  .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .dot.d1 { background: #ff5f56; } .dot.d2 { background: #ffbd2e; } .dot.d3 { background: #27c93f; }
-  .term-title { margin-left: 8px; color: var(--dim); font-size: .82rem; }
-  .term-body { padding: 26px 30px 34px; min-height: 260px; font-size: 1.15rem; line-height: 1.9; }
-  .term-body .cmd { color: var(--term-text); }
-  .term-body .cmd .p { color: var(--green-bright); margin-right: 8px; }
-  .term-body .out { color: var(--green); }
-  .term-body .out.dim { color: var(--dim); }
-  .caret { display: inline-block; width: 10px; height: 1.15rem; background: var(--green-bright);
-    vertical-align: -3px; margin-left: 2px; animation: blink 1.05s steps(1) infinite; }
-  .tline { color: var(--term-text); font-size: 1.5rem; font-weight: 500; margin-bottom: 8px; position: relative; z-index: 2; }
-  .tline .arrow { color: var(--green-bright); }
-  .tline .hi { color: var(--green); }
-  .tline.tsmall { font-size: .85rem; color: var(--dim); margin-bottom: 6px; }
-  .tline.thead { font-size: 1.9rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
-  .tline.tsub { font-size: 1rem; color: var(--dim); margin-bottom: 16px; }
-  .cursor { display: inline-block; width: 12px; height: 1.5rem; background: var(--green-bright);
-    vertical-align: -3px; animation: blink 1.05s steps(1) infinite; }
+  .cursor { display: inline-block; width: 10px; height: 1.3rem; background: var(--green-bright);
+    vertical-align: -2px; animation: blink 1.05s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
+
   /* hero header + streaming feed */
-  .term-head { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 700; color: #fff; margin-bottom: 16px; }
+  .term-head { font-size: clamp(1.4rem, 4.5vw, 2.4rem); font-weight: 700; color: #fff; margin-bottom: clamp(8px, 2vh, 16px); flex: 0 0 auto; }
   .term-head .hi { color: var(--green-bright); }
-  .term-stream { font-size: clamp(.8rem, 2.4vw, 1rem); line-height: 1.85; height: clamp(190px, 30vh, 300px);
-    overflow: hidden; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word;
+  .term-stream {
+    font-size: clamp(.72rem, 2.2vw, .95rem);
+    line-height: 1.75;
+    height: clamp(140px, 26vh, 280px);
+    overflow: hidden;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     display: flex; flex-direction: column; justify-content: flex-end;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 42px); mask-image: linear-gradient(to bottom, transparent 0, #000 42px); }
-  .term-stream .row { display: block; flex: 0 0 auto; }
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 36px);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 36px);
+  }
+  .term-stream .row { display: block; flex: 0 0 auto; min-width: 0; word-break: break-word; }
   .l-cmd { color: var(--term-text); } .l-cmd .p { color: var(--green-bright); margin-right: 8px; }
   .l-out { color: var(--dim); }
   .l-sk  { color: var(--green); }
   .l-ok  { color: var(--green-bright); }
-  .l-bin { color: #3f5a3f; letter-spacing: 1px; }
+  .l-bin { color: #3f5a3f; letter-spacing: 1px; word-break: break-all; }
   .l-code{ color: #38bec9; }
-  .ground { position: absolute; bottom: 34px; left: 0; right: 0; height: 2px;
-    background: repeating-linear-gradient(90deg,#3a463a 0 22px,transparent 22px 30px); opacity:.55; }
-  .bimo-wrap { position: absolute; bottom: 28px; left: 42%; display: flex; flex-direction: column; align-items: center; animation: bob 1.3s ease-in-out infinite; }
-  #bimo { width: 56px; height: auto; image-rendering: pixelated; }
-  .bimo-tag { margin-top: 3px; font-size: .6rem; font-weight: 700; letter-spacing: 1px; color: var(--green-bright); }
-  .legA { animation: la .2s steps(1) infinite; }
-  .legB { animation: lb .2s steps(1) infinite; }
-  .errbot { position: absolute; bottom: 32px; image-rendering: pixelated; }
-  .errbot.b2 { animation: bob 2.3s ease-in-out infinite; }
-  .f-ok { opacity: 0; }
-  .solving .f-bad { animation: solveBad 3.6s steps(1) infinite; }
-  .solving .f-ok  { animation: solveOk 3.6s steps(1) infinite; }
-  .bin { position: absolute; color: var(--dim); font-size: .85rem; font-weight: 700; animation: floaty 3s ease-in-out infinite; }
-  .bin.on { color: var(--green-bright); }
-  .cloud { position: absolute; opacity: .35; }
-  /* night-city + sitting robot */
-  .moon { position: absolute; z-index: 0; opacity: .85; }
-  .star { position: absolute; width: 2px; height: 2px; background: #8fe3f0; border-radius: 50%; z-index: 0; animation: twinkle 2.6s ease-in-out infinite; }
-  .skyline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 84px; opacity: .6; z-index: 0; }
-  .walk-wrap { position: absolute; bottom: 32px; left: 20px; width: 66px; z-index: 1; animation: walkX 11s ease-in-out infinite; }
-  #robot.walk { display: block; width: 66px; height: auto; image-rendering: pixelated; transform-origin: bottom center; animation: waddle .5s ease-in-out infinite; }
-  .walk-shadow { position: absolute; bottom: -3px; left: 9px; width: 48px; height: 6px; background: rgba(0,0,0,.35); border-radius: 50%; filter: blur(1px); animation: shad .5s ease-in-out infinite; }
-  @keyframes twinkle { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
-  @keyframes walkX { 0% { left: 20px; } 50% { left: calc(100% - 92px); } 100% { left: 20px; } }
-  @keyframes waddle { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-3px) rotate(3deg); } }
-  @keyframes shad { 0%,100% { transform: scaleX(1); opacity: .35; } 50% { transform: scaleX(.82); opacity: .22; } }
-  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-  @keyframes floaty { 0%,100% { transform: translateY(0); opacity:.5; } 50% { transform: translateY(-6px); opacity:.9; } }
-  @keyframes la { 0%,49.9% { opacity: 1; } 50%,100% { opacity: 0; } }
-  @keyframes lb { 0%,49.9% { opacity: 0; } 50%,100% { opacity: 1; } }
-  @keyframes solveBad { 0%,62% { opacity: 1; } 66%,100% { opacity: 0; } }
-  @keyframes solveOk  { 0%,62% { opacity: 0; } 66%,100% { opacity: 1; } }
 
-  .actions { display: flex; gap: clamp(10px, 2vw, 16px); margin-top: 24px; flex-wrap: wrap; width: 100%; }
-  .action { flex: 1 1 150px; min-width: 0; background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: clamp(14px, 2.4vw, 18px) clamp(12px, 2vw, 24px); text-align: center; text-decoration: none; color: var(--ink);
+  .actions { display: flex; gap: clamp(8px, 2vw, 16px); margin-top: clamp(14px, 2.5vh, 24px); flex-wrap: wrap; width: 100%; }
+  .action { flex: 1 1 140px; min-width: 0; background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: clamp(10px, 2vw, 16px) clamp(10px, 2vw, 20px); text-align: center; text-decoration: none; color: var(--ink);
     transition: transform .15s, border-color .15s, background .15s; }
   .action:hover { transform: translateY(-3px); border-color: var(--green-bright); background: #c3e0c3; }
-  .action .title { font-weight: 700; display: block; margin-bottom: 6px; font-size: clamp(.9rem, 2.4vw, 1rem); white-space: nowrap; }
-  .action .key { color: var(--dim); font-size: clamp(.72rem, 1.8vw, .8rem); }
+  .action .title { font-weight: 700; display: block; margin-bottom: 4px; font-size: clamp(.82rem, 2.2vw, .96rem); white-space: nowrap; }
+  .action .key { color: var(--dim); font-size: clamp(.68rem, 1.6vw, .78rem); }
 
   /* ---------- about ---------- */
   .about p { max-width: 64ch; margin-bottom: 14px; }
@@ -194,6 +156,10 @@
   .project h3 { font-size: clamp(.88rem, 1.9vh, 1.05rem); color: #fff; margin-bottom: 3px; }
   .project h3 .arrow { color: var(--green-bright); }
   .project h3 .muted { color: var(--dim); font-weight: 400; }
+  .project-links { margin-top: clamp(8px, 1.6vh, 14px); display: flex; gap: 12px; align-items: center; }
+  .project-links a { color: var(--green-bright); text-decoration: none; font-size: clamp(.7rem, 1.4vh, .82rem); font-weight: 500; }
+  .project-links a:hover { text-decoration: underline; }
+  .project-links .badge { background: #1f3322; color: var(--green-bright); border: 1px solid #2e5434; border-radius: 4px; font-size: .68rem; padding: 1px 6px; }
   .stack-line { color: var(--green); font-size: clamp(.68rem, 1.4vh, .8rem); margin-bottom: clamp(6px, 1.3vh, 12px); }
   .project ul { list-style: none; }
   .project li { position: relative; padding-left: 18px; margin-bottom: clamp(3px, .8vh, 7px);
@@ -236,11 +202,27 @@
   .foot a:hover { text-decoration: underline; }
 
   @media (max-width: 620px) {
-    .panel { padding: 90px 24px 30px; }
-    .tline { font-size: 1.15rem; }
-    .scene { display: none; }
+    header { padding: 12px 18px; gap: 6px 14px; }
+    .brand { font-size: 1.05rem; }
+    .navlinks { gap: 12px; font-size: .82rem; }
+    .panel { padding: 74px 18px 20px; }
+    .terminal {
+      padding: 16px 16px 14px;
+      min-height: auto;
+      max-height: calc(100vh - 170px);
+    }
+    .term-head { font-size: 1.4rem; margin-bottom: 8px; }
+    .term-stream {
+      font-size: .74rem;
+      line-height: 1.6;
+      height: clamp(140px, 32vh, 220px);
+    }
+    .actions { margin-top: 12px; gap: 8px; }
+    .action { padding: 10px 10px; }
+    .action .title { font-size: .82rem; }
+    .action .key { display: none; }
     .stack-grid { grid-template-columns: 1fr; }
-    .project { flex-basis: 82vw; }
+    .project { flex-basis: 84vw; }
     .hint { display: none; }
   }
 </style>
@@ -280,9 +262,9 @@
       <div class="panel-inner about">
         <div class="sec-head"><span class="prompt">$</span> cat about.md</div>
         <div class="sec-sub"># who am i, really</div>
-        <p>I'm <strong>Saim Azam</strong> — a self-driven developer who ships complete, working products end to end, not demos. Full-stack Go platforms, browser extensions, and Python automation.</p>
-        <p class="comment">// I like lean stacks: standard-library Go services, no-build frontends,<br/>// Docker deploys, and privacy-first designs that keep user data local.</p>
-        <p>Alongside code I'm working through the <strong>ACCA</strong> qualification, so I pair engineering with a solid finance foundation. I care about the details most people skip — request signing from scratch, rate limiting, graceful shutdown, and UX edges the big players miss.</p>
+        <p>I'm <strong>Saim Azam</strong> — a systems & full-stack developer who designs and ships complete, production-grade products end to end. High-performance Rust engines, code-graph MCP servers, Go platforms, and AI architectures.</p>
+        <p class="comment">// I like lean, robust stacks: pure-Rust SIMD & zero-copy parsing, standard-library Go services,<br/>// local-first databases, zero external dependencies, and privacy-first designs that keep data local.</p>
+        <p>Alongside code I'm working through the <strong>ACCA</strong> qualification, pairing deep systems engineering with solid financial rigor. I care about the edge cases most teams overlook: byte-level streaming memory bounds, atomic session swaps, constant-time cryptography, rate limiting, and zero-token agent orientation.</p>
       </div>
     </section>
 
@@ -293,13 +275,77 @@
         <div class="sec-sub"># selected work — scroll → all working end to end</div>
         <div class="cards-row">
           <article class="project">
+            <h3><span class="arrow">&gt;</span> BlastCode</h3>
+            <div class="stack-line">Rust · Tree-sitter · SQLite · MCP · CLI</div>
+            <ul>
+              <li>Incremental code-graph engine and blast-radius analyzer for AI coding agents (Claude Code, Cursor, Windsurf).</li>
+              <li>98.2% token reduction by generating surgical AST skeletons instead of dumping entire source files into context.</li>
+              <li>Pre-edit impact radius and in-memory patch verification (`verify_patch`) prevent breaking changes before disk writes.</li>
+              <li>Published across crates.io, PyPI, npm/npx, Homebrew Tap, and Open VSX extension.</li>
+            </ul>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">Tree-sitter</span><span class="tag">MCP</span><span class="tag">crates.io</span><span class="tag">npm</span></div>
+            <div class="project-links">
+              <a href="https://github.com/isaim0011/blastcode" target="_blank" rel="noopener">GitHub ↗</a>
+              <span class="badge">crates.io · npm · PyPI</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> AI Ustaad</h3>
+            <div class="stack-line">SvelteKit 2 (Svelte 5 Runes) · Rust Axum · Supabase · Cloudflare</div>
+            <ul>
+              <li>Full-stack AI Engineering learning platform delivering production-grade curricula in Roman Urdu &amp; English.</li>
+              <li>High-throughput SVG architectural diagram compiler and AI mentor backend built in native Rust with Axum.</li>
+              <li>Interactive quizzes, XP tracking, streaks, and gamified achievement unlocks powered by Supabase PostgreSQL RPCs and RLS.</li>
+              <li>Deployed to Cloudflare Pages edge network with serverless SSR via @sveltejs/adapter-cloudflare.</li>
+            </ul>
+            <div class="tags"><span class="tag">SvelteKit 2</span><span class="tag">Svelte 5</span><span class="tag">Rust Axum</span><span class="tag">Supabase</span><span class="tag">Edge</span></div>
+            <div class="project-links">
+              <a href="https://ai-ustaad.pages.dev" target="_blank" rel="noopener">Live Platform ↗</a>
+              <a href="https://github.com/isaim0011/ai-ustaad" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> SwitchX Pro</h3>
+            <div class="stack-line">Rust · DPAPI · VS Code Extension · CLI</div>
+            <ul>
+              <li>Universal AI subscription account switcher and rolling quota router for Claude Code, Antigravity, Cursor, and Copilot.</li>
+              <li>Sub-10ms instant session swapping via encrypted DPAPI profiles and atomic filesystem operations.</li>
+              <li>Dual rolling window quota engine with real-time countdowns and automatic quota exhaustion failover (`auto-next`).</li>
+              <li>Available via Cargo (`cargo install switchx`), npx zero-install, and Open VSX extension registry.</li>
+            </ul>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">VS Code Ext</span><span class="tag">CLI</span><span class="tag">OAuth</span><span class="tag">Open VSX</span></div>
+            <div class="project-links">
+              <a href="https://github.com/isaim0011/switchx" target="_blank" rel="noopener">GitHub ↗</a>
+              <span class="badge">Open VSX · Cargo</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3><span class="arrow">&gt;</span> OxPDF</h3>
+            <div class="stack-line">Pure Rust · Zero-Copy SIMD · WebAssembly · MCP</div>
+            <ul>
+              <li>Streaming, memory-bounded PDF engine capping physical RAM under 32MB while processing 10GB+ document streams.</li>
+              <li>Zero-copy SIMD lexing with AVX2/NEON hardware vector acceleration and ISO 32000-1 conformance.</li>
+              <li>Permanent cryptographic decryption (AES-256, RC4), layout-aware Markdown extraction, and searchable sandwich PDF compilation.</li>
+              <li>Multi-platform bindings for Python (PyPI), CLI binary, WebAssembly, and native MCP server.</li>
+            </ul>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">SIMD</span><span class="tag">WASM</span><span class="tag">PyPI</span><span class="tag">ISO 32000</span></div>
+            <div class="project-links">
+              <a href="https://github.com/isaim0011/oxpdf" target="_blank" rel="noopener">GitHub ↗</a>
+              <span class="badge">PyPI · MCP</span>
+            </div>
+          </article>
+
+          <article class="project">
             <h3><span class="arrow">&gt;</span> Universal Studio</h3>
             <div class="stack-line">Go · pdfcpu · pdf.js · Docker</div>
             <ul>
-              <li>150+ browser-based tools across PDF, image, video, audio, text, QR, calculator and developer utilities.</li>
-              <li>Go API on pdfcpu: merge, split, extract, rotate, watermark, page numbers, compress, AES-256 encrypt/unlock — each request in an isolated temp dir deleted right after, so no file persists.</li>
-              <li>Visual page picker renders real PDF thumbnails client-side with pdf.js — click pages instead of blind ranges. iLovePDF & Smallpdf don't do this.</li>
-              <li>Single Docker image: API + frontend + deps, rate limiting, graceful shutdown.</li>
+              <li>150+ browser-based tools across PDF, image, video, audio, text, QR, calculator, and developer utilities.</li>
+              <li>Go API on pdfcpu: merge, split, extract, rotate, watermark, page numbers, compress, AES-256 encrypt/unlock — zero persistent disk storage.</li>
+              <li>Visual page picker renders real PDF thumbnails client-side with pdf.js — click pages instead of blind ranges.</li>
+              <li>Single self-contained Docker image: API + frontend + dependencies with rate limiting and graceful shutdown.</li>
             </ul>
             <div class="tags"><span class="tag">Go</span><span class="tag">pdfcpu</span><span class="tag">pdf.js</span><span class="tag">Docker</span></div>
           </article>
@@ -309,43 +355,10 @@
             <div class="stack-line">Go (stdlib-only) · Vanilla JS · OAuth</div>
             <ul>
               <li>"Say it, don't sign it" — build a customisable card (themes, patterns, prompts, reactions), share it, receive anonymous messages.</li>
-              <li>Zero-dependency Go backend: salted iterated password hashing, HttpOnly/SameSite sessions, Google &amp; Apple OAuth, per-IP rate limiting, content filtering, security headers.</li>
-              <li>One process serves the REST API and a no-build vanilla-JS SPA (auth, dashboard, card builder, inbox, public page).</li>
+              <li>Zero-dependency Go backend: salted iterated password hashing, HttpOnly/SameSite sessions, Google &amp; Apple OAuth, and security headers.</li>
+              <li>Single binary serves the REST API and a no-build vanilla-JS SPA with real-time feed.</li>
             </ul>
             <div class="tags"><span class="tag">Go</span><span class="tag">OAuth</span><span class="tag">Vanilla JS</span><span class="tag">Zero deps</span></div>
-          </article>
-
-          <article class="project">
-            <h3><span class="arrow">&gt;</span> AI Chat Vault</h3>
-            <div class="stack-line">JavaScript · Manifest V3 · IndexedDB</div>
-            <ul>
-              <li>Cross-browser extension that auto-captures and locally indexes Claude &amp; ChatGPT chats, with full-text search in a popup.</li>
-              <li>Content scripts for live capture, local-first IndexedDB on the free tier, planned Supabase sync + Stripe billing.</li>
-              <li>Verified working end to end on both Claude and ChatGPT.</li>
-            </ul>
-            <div class="tags"><span class="tag">Manifest V3</span><span class="tag">IndexedDB</span><span class="tag">Search</span></div>
-          </article>
-
-          <article class="project">
-            <h3><span class="arrow">&gt;</span> Missed-Call Text-Back</h3>
-            <div class="stack-line">Go (stdlib-only) · Twilio · Webhooks</div>
-            <ul>
-              <li>Auto-replies to missed business calls over SMS and forwards the lead to the owner in real time.</li>
-              <li>Twilio webhook signature validation (HMAC-SHA1) written from scratch — no external deps.</li>
-              <li>Per-client env config (one codebase, many clients) with a durable JSON-lines event log.</li>
-            </ul>
-            <div class="tags"><span class="tag">Go</span><span class="tag">Twilio</span><span class="tag">HMAC</span></div>
-          </article>
-
-          <article class="project">
-            <h3><span class="arrow">&gt;</span> Client-Finding Automation</h3>
-            <div class="stack-line">Python · Google Places · openpyxl</div>
-            <ul>
-              <li>Give it an industry + country; finds ~100 businesses, scrapes each site for contacts and decision-makers.</li>
-              <li>Compiles everything into a styled Excel report.</li>
-              <li>Pipeline: API search → scraping → cleaning → formatted spreadsheet.</li>
-            </ul>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Places API</span><span class="tag">openpyxl</span></div>
           </article>
         </div>
       </div>
@@ -358,15 +371,15 @@
         <div class="sec-sub"># tools i reach for</div>
 
         <div class="stack-grid">
-          <div class="stack-card"><h4>Languages</h4><div class="items"><span class="chip">Go</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">PHP</span><span class="chip">Lua</span><span class="chip">HTML/CSS</span></div></div>
-          <div class="stack-card"><h4>Frontend</h4><div class="items"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Vue</span><span class="chip">Svelte</span><span class="chip">SolidJS</span><span class="chip">Ember.js</span><span class="chip">Tailwind</span><span class="chip">Shadcn/ui</span></div></div>
-          <div class="stack-card"><h4>Backend</h4><div class="items"><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">net/http</span><span class="chip">REST APIs</span></div></div>
-          <div class="stack-card"><h4>Databases</h4><div class="items"><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">Firebase</span><span class="chip">Supabase</span></div></div>
-          <div class="stack-card"><h4>Cloud &amp; Deploy</h4><div class="items"><span class="chip">Docker</span><span class="chip">Google Cloud</span><span class="chip">Render</span><span class="chip">Heroku</span><span class="chip">Resend</span></div></div>
-          <div class="stack-card"><h4>Tools &amp; OS</h4><div class="items"><span class="chip">Git</span><span class="chip">VS Code</span><span class="chip">Linux</span><span class="chip">Ubuntu</span></div></div>
+          <div class="stack-card"><h4>Languages</h4><div class="items"><span class="chip">Rust</span><span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">HTML/CSS</span></div></div>
+          <div class="stack-card"><h4>Frontend</h4><div class="items"><span class="chip">Svelte 5</span><span class="chip">SvelteKit</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Vue</span><span class="chip">Tailwind</span><span class="chip">WebAssembly</span></div></div>
+          <div class="stack-card"><h4>Backend &amp; Systems</h4><div class="items"><span class="chip">Axum (Rust)</span><span class="chip">net/http (Go)</span><span class="chip">Tree-sitter</span><span class="chip">SIMD</span><span class="chip">MCP Servers</span><span class="chip">FastAPI</span></div></div>
+          <div class="stack-card"><h4>Databases</h4><div class="items"><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">SQLite</span><span class="chip">MySQL</span><span class="chip">Redis</span></div></div>
+          <div class="stack-card"><h4>Cloud &amp; Deploy</h4><div class="items"><span class="chip">Cloudflare Pages</span><span class="chip">Docker</span><span class="chip">Google Cloud</span><span class="chip">Render</span><span class="chip">Vercel</span></div></div>
+          <div class="stack-card"><h4>Tools &amp; Ecosystem</h4><div class="items"><span class="chip">Cargo</span><span class="chip">Git</span><span class="chip">VS Code Ext</span><span class="chip">Linux</span><span class="chip">Homebrew</span></div></div>
           <div class="stack-card"><h4>Design</h4><div class="items"><span class="chip">Figma</span><span class="chip">Photoshop</span><span class="chip">Blender</span></div></div>
-          <div class="stack-card"><h4>Web &amp; Other</h4><div class="items"><span class="chip">Web3.js</span><span class="chip">Hugging Face</span><span class="chip">WordPress</span><span class="chip">Wix</span><span class="chip">Webflow</span></div></div>
-          <div class="stack-card"><h4>Principles</h4><div class="items"><span class="chip">Zero-dependency</span><span class="chip">Local-first</span><span class="chip">Privacy-first</span><span class="chip">No-build</span></div></div>
+          <div class="stack-card"><h4>Registries</h4><div class="items"><span class="chip">crates.io</span><span class="chip">npm</span><span class="chip">PyPI</span><span class="chip">Open VSX</span></div></div>
+          <div class="stack-card"><h4>Principles</h4><div class="items"><span class="chip">Zero-dependency</span><span class="chip">Memory-bounded</span><span class="chip">Local-first</span><span class="chip">Privacy-first</span></div></div>
         </div>
       </div>
     </section>
@@ -380,8 +393,7 @@
           <div class="row"><span class="arrow">&gt;</span> <span class="key">email</span> <a id="mailLink" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=ibimo0dev@gmail.com&su=Hi%20Saim%20%E2%80%94%20from%20your%20portfolio&body=Hi%20Saim%2C%0A%0AI%20found%20you%20through%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about%20" target="_blank" rel="noopener">ibimo0dev@gmail.com</a></div>
           <div class="row"><span class="arrow">&gt;</span> <span class="key">x</span> <a href="https://x.com/ibimo_0" target="_blank" rel="noopener">@ibimo_0</a></div>
           <div class="row"><span class="arrow">&gt;</span> <span class="key">whatsapp</span> <a href="https://wa.me/923397556187" target="_blank" rel="noopener">+92 339 7556187</a></div>
-          <div class="row"><span class="arrow">&gt;</span> <span class="key">discord</span> <span style="color:var(--term-text)">Bimo</span> <span style="color:var(--dim)">(i_samuu)</span></div>
-          <div class="row"><span class="arrow">&gt;</span> <span class="key">github</span> <a href="https://github.com/iBIM0-0" target="_blank" rel="noopener">github.com/iBIM0-0</a></div>
+          <div class="row"><span class="arrow">&gt;</span> <span class="key">github</span> <a href="https://github.com/isaim0011" target="_blank" rel="noopener">github.com/isaim0011</a></div>
           <div class="row"><span class="arrow">&gt;</span> <span class="key">status</span> open to work &amp; freelance</div>
           <div class="row" style="margin-top:12px"><span class="arrow">&gt;</span> <span class="cursor" style="height:1rem;vertical-align:-2px"></span></div>
         </div>
@@ -459,24 +471,21 @@
     if (!stream) return;
     var feed = [
       ['cmd', 'whoami'],
-      ['out', 'Saim Azam — full-stack developer (aka Bimo)'],
+      ['out', 'Saim Azam (Bimo) — systems & full-stack developer'],
       ['bin', '01001000 01101001 00100001'],
       ['cmd', 'cat about.md'],
-      ['out', '# ships complete, working products end-to-end'],
-      ['out', '# lean stacks · Go stdlib · no-build frontends · privacy-first'],
-      ['cmd', 'ls ~/skills'],
-      ['sk',  'Go  JavaScript  TypeScript  Python  HTML/CSS'],
-      ['sk',  'React  Next.js  Tailwind  Node  FastAPI  Postgres  Docker'],
-      ['code','func main() { http.ListenAndServe(":8080", router) }'],
-      ['cmd', 'git commit -m "ship it"'],
-      ['ok',  '[ok] 4 files changed, 210 insertions(+)'],
-      ['bin', '0110001001101001011011010110111101'],
-      ['cmd', 'docker compose up -d'],
-      ['out', '✔ api healthy · 200 OK · 0.42s'],
-      ['code','const bimo = () => build(cool, things)'],
+      ['out', '# ships complete products end-to-end · Rust · Go · AI'],
+      ['out', '# zero-dep · memory-bounded · local-first · privacy-first'],
+      ['cmd', 'blast impact src/lib.rs'],
+      ['ok',  '✔ 0 regressions · 98.2% token savings via AST skeletons'],
+      ['cmd', 'cargo test -p oxpdf-core'],
+      ['ok',  'test result: ok. 48 passed; 0 failed · SIMD AVX2 active'],
+      ['cmd', 'switchx auto-next claude'],
+      ['out', '⚡ swapped profile in 4ms · quota 100%'],
+      ['cmd', 'curl -I https://ai-ustaad.pages.dev'],
+      ['out', 'HTTP/2 200 OK · Cloudflare Edge · SvelteKit 2 + Axum'],
       ['cmd', 'echo $STATUS'],
       ['ok',  '● open to work & freelance'],
-      ['bin', '01000010 01101001 01101101 01101111'],
     ];
     var MAX = 13, i = 0;
     var caret = document.createElement('span');
